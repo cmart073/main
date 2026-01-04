@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Ceremonies — Chris Martin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --text: #2a2520;
+      --text-soft: #6a6560;
+      --accent: #8b7355;
+      --border: rgba(50, 45, 40, 0.12);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+    
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 3rem 6rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      margin-bottom: 8rem;
+    }
+    
+    .hero h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 3.75rem;
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+    }
+    
+    .hero .subhead {
+      font-size: 1.25rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+    }
+    
+    .cta-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+      border: 2px solid var(--text);
+    }
+    
+    .cta-primary:hover {
+      background: transparent;
+      color: var(--text);
+    }
+    
+    /* Section Styling */
+    section {
+      margin-bottom: 8rem;
+    }
+    
+    section h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    /* Why Me Section */
+    .why-item {
+      margin-bottom: 2.5rem;
+    }
+    
+    .why-item h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .why-item p {
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    
+    /* Past Ceremonies */
+    .ceremony {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .ceremony:last-child {
+      border-bottom: none;
+    }
+    
+    .ceremony h3 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .ceremony p {
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    
+    .note {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+    
+    /* Approach Section */
+    .approach-steps {
+      counter-reset: step;
+    }
+    
+    .approach-step {
+      margin-bottom: 2rem;
+      padding-left: 3rem;
+      position: relative;
+    }
+    
+    .approach-step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .approach-step p {
+      color: var(--text);
+    }
+    
+    .approach-closing {
+      margin-top: 2.5rem;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+    
+    /* Who This Is For */
+    .fit-section {
+      margin-bottom: 3rem;
+    }
+    
+    .fit-section h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    
+    .fit-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .fit-section li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+    
+    .fit-section li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
+    .filter-note {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+    
+    /* Contact Form */
+    .contact-intro {
+      color: var(--text-soft);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    input, textarea {
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--border);
+      background: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      border-radius: 2px;
+      transition: border-color 0.2s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    button[type="submit"] {
+      align-self: flex-start;
+      padding: 1rem 2.5rem;
+      background: var(--text);
+      color: var(--bg);
+      border: 2px solid var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s ease;
+    }
+    
+    button[type="submit"]:hover {
+      background: transparent;
+      color: var(--text);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .content {
+        padding: 6rem 2rem 4rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      
+      .hero .subhead {
+        font-size: 1.125rem;
+      }
+      
+      section {
+        margin-bottom: 6rem;
+      }
+      
+      .approach-step {
+        padding-left: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .content {
+        padding: 5rem 1.5rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      
+      .hero .subhead {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-container"></div>
+  
+  <div class="content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>I've had the honor of marrying people I care deeply about.</h1>
+      <p class="subhead">I officiate weddings for family, friends, and people connected to my life — with ceremonies that are personal, thoughtful, and grounded.</p>
+      <a href="#contact" class="cta-primary">Ask me about your wedding</a>
+    </section>
+    
+    <!-- Why Me Section -->
+    <section class="why-me">
+      <h2>Why Me</h2>
+      
+      <div class="why-item">
+        <h3>Personal, not performative</h3>
+        <p>Every ceremony is written specifically for the couple. No templates. No filler.</p>
+      </div>
+      
+      <div class="why-item">
+        <h3>Calm, prepared, and clear</h3>
+        <p>I'm comfortable speaking in front of people and focused on making the moment feel natural — not awkward.</p>
+      </div>
+      
+      <div class="why-item">
+        <h3>Asked because of trust</h3>
+        <p>I've officiated weddings because of relationships, not advertisements.</p>
+      </div>
+    </section>
+    
+    <!-- Past Ceremonies Section -->
+    <section class="ceremonies">
+      <h2>Weddings I've Officiated</h2>
+      
+      <div class="ceremony">
+        <h3>[Couple names] — Italy, 2023</h3>
+        <p>An intimate destination wedding focused on family, commitment, and shared history. Warm, reflective, and unhurried.</p>
+      </div>
+      
+      <div class="ceremony">
+        <h3>[Couple names] — 2022</h3>
+        <p>A relaxed, personal ceremony centered on the couple's story and the people who brought them together.</p>
+      </div>
+      
+      <p class="note">Full ceremony text available upon request.</p>
+    </section>
+    
+    <!-- My Approach Section -->
+    <section class="approach">
+      <h2>How It Works</h2>
+      
+      <div class="approach-steps">
+        <div class="approach-step">
+          <p>We talk about what you want — tone, length, boundaries</p>
+        </div>
+        <div class="approach-step">
+          <p>I write a ceremony tailored to you</p>
+        </div>
+        <div class="approach-step">
+          <p>We review and adjust together</p>
+        </div>
+        <div class="approach-step">
+          <p>I show up prepared and deliver it calmly</p>
+        </div>
+      </div>
+      
+      <p class="approach-closing">No theatrics. No pressure. Just a ceremony that fits.</p>
+    </section>
+    
+    <!-- Who This Is For Section -->
+    <section class="who-for">
+      <h2>Who This Is For</h2>
+      
+      <div class="fit-section">
+        <h3>This is a good fit if:</h3>
+        <ul>
+          <li>You want something personal and sincere</li>
+          <li>You value clarity and preparation</li>
+          <li>You want someone who knows how to speak, not perform</li>
+        </ul>
+      </div>
+      
+      <div class="fit-section">
+        <h3>This is probably not a fit if:</h3>
+        <ul>
+          <li>You're shopping for the cheapest officiant</li>
+          <li>You want a rigid, fully scripted religious service</li>
+          <li>You want something overly theatrical</li>
+        </ul>
+      </div>
+      
+      <p class="filter-note">This section stays. It filters the right people in.</p>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Interested?</h2>
+      <p class="contact-intro">Short note is fine. Start with a conversation.</p>
+      
+      <div id="success-message" style="display: none; padding: 1.5rem; background: #e8f5e9; border-radius: 4px; margin-bottom: 2rem; color: #2e7d32;">
+        Thank you for reaching out. I'll be in touch soon.
+      </div>
+      
+      <form id="wedding-form" action="/wedding-contact" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="wedding-details">Wedding date & location</label>
+          <input type="text" id="wedding-details" name="wedding-details" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="connection">How we know each other</label>
+          <input type="text" id="connection" name="connection" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Anything you want me to know</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        
+        <button type="submit">Start the conversation</button>
+      </form>
+    </section>
+  </div>
+  
+  <script>
+    // Load navigation
+    fetch('/nav.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('nav-container').innerHTML = html;
+      });
+    
+    // Show success message if redirected with success parameter
+    if (window.location.search.includes('success=true')) {
+      document.getElementById('success-message').style.display = 'block';
+      document.getElementById('wedding-form').style.display = 'none';
+      // Smooth scroll to the message
+      setTimeout(() => {
+        document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  </script>
+</body>
+</html>

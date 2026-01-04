@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Martin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf8f5;
+      color: #2a2520;
+      line-height: 1.6;
+    }
+    
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .link-item {
+      display: block;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(50, 45, 40, 0.12);
+      text-decoration: none;
+      color: #2a2520;
+      transition: all 0.2s ease;
+    }
+    
+    .link-item:hover {
+      padding-left: 1rem;
+      border-bottom-color: #2a2520;
+    }
+    
+    .link-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+    
+    .link-desc {
+      font-size: 0.95rem;
+      color: #6a6560;
+    }
+    
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .content {
+        padding: 6rem 1.5rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-container"></div>
+  
+  <div class="content">
+    <h1>Chris Martin</h1>
+    
+    <div class="links">
+      <a href="/weddings.html" class="link-item">
+        <div class="link-title">Weddings</div>
+        <div class="link-desc">Personal ceremony officiation for people I know</div>
+      </a>
+      
+      <!-- More links as you build pages -->
+    </div>
+  </div>
+  
+  <script>
+    // Load navigation
+    fetch('/nav.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('nav-container').innerHTML = html;
+      });
+  </script>
+</body>
+</html>
