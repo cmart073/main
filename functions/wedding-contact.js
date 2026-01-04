@@ -28,7 +28,9 @@ export async function onRequestPost(context) {
       // Get email from environment variable
       const toEmail = context.env.ADMIN_EMAIL || 'noreply@cmart073.com';
       
-      await fetch('https://api.mailchannels.net/tx/v1/send', {
+      console.log('Attempting to send email to:', toEmail);
+      
+      const emailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,6 +59,11 @@ export async function onRequestPost(context) {
           }],
         }),
       });
+      
+      console.log('Email API response status:', emailResponse.status);
+      const emailResult = await emailResponse.text();
+      console.log('Email API response:', emailResult);
+      
     } catch (emailError) {
       console.error('Email send failed:', emailError);
       // Continue even if email fails - data is still in KV
