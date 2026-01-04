@@ -24,8 +24,10 @@ export async function onRequestPost(context) {
     }
     
     // Send email notification using MailChannels (free on Cloudflare)
-    // Update YOUR_EMAIL@example.com with your actual email
     try {
+      // Get email from environment variable
+      const toEmail = context.env.ADMIN_EMAIL || 'noreply@cmart073.com';
+      
       await fetch('https://api.mailchannels.net/tx/v1/send', {
         method: 'POST',
         headers: {
@@ -33,7 +35,7 @@ export async function onRequestPost(context) {
         },
         body: JSON.stringify({
           personalizations: [{
-            to: [{ email: 'YOUR_EMAIL@example.com', name: 'Chris Martin' }],
+            to: [{ email: toEmail, name: 'Chris Martin' }],
           }],
           from: {
             email: 'weddings@cmart073.com',
