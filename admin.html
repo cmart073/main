@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Submissions - Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf8f5;
+      color: #2a2520;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      color: #6a6560;
+      margin-bottom: 2rem;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(50, 45, 40, 0.1);
+    }
+    
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #8b7355;
+      font-family: 'Crimson Pro', serif;
+    }
+    
+    .stat-card .label {
+      font-size: 0.875rem;
+      color: #6a6560;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: #6a6560;
+    }
+    
+    .submissions {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .submission-card {
+      background: white;
+      border: 1px solid rgba(50, 45, 40, 0.1);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: all 0.2s ease;
+    }
+    
+    .submission-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border-color: rgba(50, 45, 40, 0.2);
+    }
+    
+    .submission-card.unread {
+      border-left: 4px solid #8b7355;
+    }
+    
+    .submission-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+    
+    .submission-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2a2520;
+    }
+    
+    .submission-date {
+      font-size: 0.875rem;
+      color: #6a6560;
+    }
+    
+    .submission-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 3px;
+    }
+    
+    .submission-badge.unread {
+      background: #fff3e0;
+      color: #e65100;
+    }
+    
+    .submission-field {
+      margin-bottom: 1rem;
+    }
+    
+    .submission-field label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #6a6560;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .submission-field .value {
+      color: #2a2520;
+    }
+    
+    .no-submissions {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #6a6560;
+    }
+    
+    .no-submissions h2 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #2a2520;
+    }
+    
+    .error {
+      background: #ffebee;
+      border: 1px solid #ef5350;
+      color: #c62828;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .stats {
+        flex-direction: column;
+      }
+      
+      .submission-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Wedding Submissions</h1>
+    <p class="subtitle">All contact form submissions from your wedding page</p>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number" id="total-count">-</div>
+        <div class="label">Total Submissions</div>
+      </div>
+      <div class="stat-card">
+        <div class="number" id="unread-count">-</div>
+        <div class="label">Unread</div>
+      </div>
+    </div>
+    
+    <div id="error-message" class="error" style="display: none;"></div>
+    <div id="loading" class="loading">Loading submissions...</div>
+    <div id="submissions" class="submissions"></div>
+  </div>
+  
+  <script>
+    async function loadSubmissions() {
+      try {
+        const response = await fetch('/api/submissions');
+        
+        if (!response.ok) {
+          throw new Error('Failed to load submissions');
+        }
+        
+        const submissions = await response.json();
+        
+        document.getElementById('loading').style.display = 'none';
+        
+        if (submissions.length === 0) {
+          document.getElementById('submissions').innerHTML = `
+            <div class="no-submissions">
+              <h2>No submissions yet</h2>
+              <p>Wedding inquiries will appear here when people submit the contact form.</p>
+            </div>
+          `;
+          document.getElementById('total-count').textContent = '0';
+          document.getElementById('unread-count').textContent = '0';
+          return;
+        }
+        
+        // Update stats
+        const unreadCount = submissions.filter(s => !s.read).length;
+        document.getElementById('total-count').textContent = submissions.length;
+        document.getElementById('unread-count').textContent = unreadCount;
+        
+        // Render submissions
+        const submissionsHtml = submissions.map(submission => {
+          const date = new Date(submission.timestamp);
+          const dateStr = date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
+          
+          return `
+            <div class="submission-card ${!submission.read ? 'unread' : ''}">
+              <div class="submission-header">
+                <div>
+                  <div class="submission-name">${escapeHtml(submission.name)}</div>
+                  <div class="submission-date">${dateStr}</div>
+                </div>
+                ${!submission.read ? '<span class="submission-badge unread">New</span>' : '<span class="submission-badge">Read</span>'}
+              </div>
+              
+              <div class="submission-field">
+                <label>Wedding Date & Location</label>
+                <div class="value">${escapeHtml(submission.weddingDetails)}</div>
+              </div>
+              
+              <div class="submission-field">
+                <label>Connection</label>
+                <div class="value">${escapeHtml(submission.connection)}</div>
+              </div>
+              
+              ${submission.message ? `
+                <div class="submission-field">
+                  <label>Message</label>
+                  <div class="value">${escapeHtml(submission.message)}</div>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+        
+        document.getElementById('submissions').innerHTML = submissionsHtml;
+        
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error-message').textContent = 
+          'Error loading submissions: ' + error.message;
+        document.getElementById('error-message').style.display = 'block';
+      }
+    }
+    
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    // Load on page load
+    loadSubmissions();
+    
+    // Auto-refresh every 30 seconds
+    setInterval(loadSubmissions, 30000);
+  </script>
+</body>
+</html>

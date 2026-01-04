@@ -116,7 +116,7 @@
       font-weight: 600;
     }
     
-    /* Why Me Section */
+    /* Why Section */
     .why-item {
       margin-bottom: 2.5rem;
     }
@@ -136,11 +136,11 @@
     
     /* Past Ceremonies */
     .ceremony {
-      padding: 2rem 0;
+      padding: 2.5rem 0;
       border-bottom: 1px solid var(--border);
     }
     
-    .ceremony:last-child {
+    .ceremony:last-of-type {
       border-bottom: none;
     }
     
@@ -148,14 +148,18 @@
       font-family: 'Crimson Pro', serif;
       font-size: 1.5rem;
       font-weight: 600;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       letter-spacing: -0.01em;
     }
     
-    .ceremony p {
-      color: var(--text-soft);
-      line-height: 1.7;
-      margin-bottom: 0;
+    .ceremony-quote {
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--accent);
     }
     
     .ceremony-image {
@@ -237,15 +241,6 @@
       position: absolute;
       left: 0;
       color: var(--accent);
-    }
-    
-    .filter-note {
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-style: italic;
-      color: var(--text-soft);
-      font-size: 0.95rem;
     }
     
     /* Contact Form */
@@ -347,6 +342,10 @@
       .approach-step {
         padding-left: 2.5rem;
       }
+      
+      .ceremony-quote {
+        padding-left: 1rem;
+      }
     }
     
     @media (max-width: 480px) {
@@ -379,12 +378,12 @@
           <img src="images/about-me.jpg" alt="Chris Martin officiating a wedding">
         </div>
       </div>
-      <a href="#contact" class="cta-primary">Ask me about your wedding</a>
+      <a href="#contact" class="cta-primary">Tell me about your wedding</a>
     </section>
     
-    <!-- Why Me Section -->
+    <!-- Why People Ask Me Section -->
     <section class="why-me">
-      <h2>Why Me</h2>
+      <h2>Why People Ask Me</h2>
       
       <div class="why-item">
         <h3>Personal, not performative</h3>
@@ -404,35 +403,35 @@
     
     <!-- Past Ceremonies Section -->
     <section class="ceremonies">
-      <h2>Weddings I've Officiated</h2>
+      <h2>Past Ceremonies</h2>
       
       <div class="ceremony">
         <h3>The Munk Family — Italy, September 2024</h3>
-        <p>An intimate destination wedding focused on family, commitment, and shared history. Warm, reflective, and unhurried.</p>
-        <img src="images/munk-wedding.jpg" alt="The Munk Family Wedding in Italy" class="ceremony-image">
+        <div class="ceremony-quote">"This wasn't about a place, even one as beautiful as this. It was about choosing each other, clearly and without hesitation, surrounded by the people who helped make you who you are. Today wasn't the start — it was the continuation."</div>
+        <img src="images/munk-wedding.jpg" alt="Chris officiating the Munk Family wedding in Italy, September 2024" class="ceremony-image">
       </div>
       
       <div class="ceremony">
         <h3>The East Family — May 2021</h3>
-        <p>A relaxed, personal ceremony centered on the couple's story and the people who brought them together.</p>
-        <img src="images/east-wedding.jpg" alt="The East Family Wedding" class="ceremony-image">
+        <div class="ceremony-quote">"Marriage isn't about becoming someone new. It's about being fully yourself and choosing to show up anyway — on the easy days, and on the ones you don't see coming. Today is about that choice."</div>
+        <img src="images/east-wedding.jpg" alt="Chris officiating the East Family wedding, May 2021" class="ceremony-image">
       </div>
       
       <div class="ceremony">
-        <h3>The Martin Family — January 2026</h3>
-        <p>Upcoming ceremony.</p>
+        <h3>The Martin Family — January 2026 (Upcoming)</h3>
+        <div class="ceremony-quote">"This ceremony will be written with the same care and intention — focused on who you are, where you've been, and what it means for the people you love to witness the promises you're making."</div>
       </div>
       
-      <p class="note">Full ceremony text available upon request.</p>
+      <p class="note">Full ceremony text is shared privately, upon request.</p>
     </section>
     
     <!-- My Approach Section -->
     <section class="approach">
-      <h2>How It Works</h2>
+      <h2>My Approach</h2>
       
       <div class="approach-steps">
         <div class="approach-step">
-          <p>We talk about what you want — tone, length, boundaries</p>
+          <p>We talk about tone, length, and boundaries</p>
         </div>
         <div class="approach-step">
           <p>I write a ceremony tailored to you</p>
@@ -469,14 +468,12 @@
           <li>You want something overly theatrical</li>
         </ul>
       </div>
-      
-      <p class="filter-note">This section stays. It filters the right people in.</p>
     </section>
     
     <!-- Contact Section -->
     <section class="contact" id="contact">
-      <h2>Interested?</h2>
-      <p class="contact-intro">Short note is fine. Start with a conversation.</p>
+      <h2>Interested in having me officiate your wedding?</h2>
+      <p class="contact-intro">Start with a short note. We'll take it from there.</p>
       
       <div id="success-message" style="display: none; padding: 1.5rem; background: #e8f5e9; border-radius: 4px; margin-bottom: 2rem; color: #2e7d32;">
         Thank you for reaching out. I'll be in touch soon.
@@ -499,7 +496,7 @@
         </div>
         
         <div class="form-group">
-          <label for="message">Anything you want me to know</label>
+          <label for="message">Anything you'd like me to know</label>
           <textarea id="message" name="message"></textarea>
         </div>
         
