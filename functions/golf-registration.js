@@ -23,11 +23,17 @@ export async function onRequestPost(context) {
     };
     
     // Store in KV (you'll need to bind a KV namespace called GOLF_REGISTRATIONS)
+    console.log('Checking KV binding...', context.env.GOLF_REGISTRATIONS ? 'FOUND' : 'NOT FOUND');
+    
     if (context.env.GOLF_REGISTRATIONS) {
+      console.log('Attempting to store in KV with ID:', `registration:${submission.id}`);
       await context.env.GOLF_REGISTRATIONS.put(
         `registration:${submission.id}`,
         JSON.stringify(submission)
       );
+      console.log('Successfully stored in KV');
+    } else {
+      console.error('GOLF_REGISTRATIONS KV binding not found! Data will be lost!');
     }
     
     // Send email notification using MailChannels
