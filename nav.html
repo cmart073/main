@@ -8,6 +8,7 @@
       <span></span>
     </button>
     <div class="nav-links">
+      <a href="https://customization.cmart073.com" target="_blank">Cmart Custom Shop</a>
       <a href="/weddings.html">Weddings</a>
       <a href="/martin-memorial-golf-outing/">Golf Outing</a>
       <a href="https://pick-em.app" target="_blank">Pick-em</a>
@@ -137,12 +138,15 @@
 </style>
 
 <script>
-  (function() {
+  // Wait for nav to be fully loaded since it's injected via fetch
+  setTimeout(function() {
     const toggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (toggle && navLinks) {
-      toggle.addEventListener('click', function() {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         toggle.classList.toggle('active');
         navLinks.classList.toggle('active');
       });
@@ -157,11 +161,11 @@
       
       // Close menu when clicking outside
       document.addEventListener('click', function(e) {
-        if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
+        if (navLinks.classList.contains('active') && !toggle.contains(e.target) && !navLinks.contains(e.target)) {
           toggle.classList.remove('active');
           navLinks.classList.remove('active');
         }
       });
     }
-  })();
+  }, 100);
 </script>
