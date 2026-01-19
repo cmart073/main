@@ -38,7 +38,7 @@
     
     /* Hero Section */
     .hero {
-      margin-bottom: 8rem;
+      margin-bottom: 4rem;
     }
     
     .hero-content {
@@ -96,6 +96,41 @@
     .cta-primary:hover {
       background: transparent;
       color: var(--text);
+    }
+    
+    /* Credentials Section */
+    .credentials {
+      max-width: 480px;
+      margin: 4rem auto 6rem;
+      text-align: center;
+    }
+    
+    .credentials a {
+      display: inline-block;
+    }
+    
+    .credentials img {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: white;
+      padding: 0.5rem;
+    }
+    
+    .credentials p {
+      margin-top: 1.25rem;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .credentials .credential-note {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      opacity: 0.8;
     }
     
     /* Section Styling */
@@ -346,6 +381,14 @@
       .ceremony-quote {
         padding-left: 1rem;
       }
+      
+      .credentials {
+        margin: 3rem auto 5rem;
+      }
+      
+      .credentials img {
+        max-width: 300px;
+      }
     }
     
     @media (max-width: 480px) {
@@ -359,6 +402,10 @@
       
       .hero .subhead {
         font-size: 1.05rem;
+      }
+      
+      .credentials img {
+        max-width: 280px;
       }
     }
   </style>
@@ -375,13 +422,19 @@
           <p class="subhead">I officiate weddings for family, friends, and people connected to my life — with ceremonies that are personal, thoughtful, and grounded.</p>
         </div>
         <div class="hero-image">
-        <div style="width: 600px; padding: 0px; border: 0px; margin: 0px; text-align:center; font-weight: bold;"><a href="https://www.themonastery.org/ordination-form" ><img src="https://www.themonastery.org/credentials/ordination-certificate-Q2hyaXN0b3BoZXIgTWFydGluXjEyLzI1LzIwMThebGFyZ2VeZnJlZV4,.jpg" alt="My Universal Life Church Ordination" style="float: left; padding: 3px; border: 0px; margin: 0px; "/></a><br /><a href="https://www.themonastery.org/ordination" title="Get Ordained with the Universal Life Church" >Click here to get ordained.</a></div>
-        </div>
-          <div class="hero-image">
           <img src="images/about-me.jpg" alt="Chris Martin officiating a wedding">
         </div>
       </div>
       <a href="#contact" class="cta-primary">Tell me about your wedding</a>
+    </section>
+    
+    <!-- Credentials Section -->
+    <section class="credentials">
+      <a href="https://www.themonastery.org/ordination-form">
+        <img src="https://www.themonastery.org/credentials/ordination-certificate-Q2hyaXN0b3BoZXIgTWFydGluXjEyLzI1LzIwMThebGFyZ2VeZnJlZV4,.jpg" alt="Universal Life Church ordination certificate for Chris Martin">
+      </a>
+      <p>Ordained through the Universal Life Church and legally authorized to officiate wedding ceremonies.</p>
+      <p class="credential-note">Credential documentation available upon request.</p>
     </section>
     
     <!-- Why People Ask Me Section -->
